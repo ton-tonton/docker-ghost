@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    image: ghost:1-alpine
+    restart: always
+    volumes:
+      - "./content:/var/lib/ghost/content"
+    ports:
+      - 80:2368
+    networks:
+      - webnet
+networks:
+  webnet:
