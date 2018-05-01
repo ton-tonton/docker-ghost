@@ -7,8 +7,8 @@ services:
         condition: on-failure
     volumes:
       - "./content:/var/lib/ghost/content"
-    ports:
-      - 2368:2368
+    expose:
+      - "2368"
     networks:
       - webnet
     environment:
