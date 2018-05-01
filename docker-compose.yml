@@ -13,6 +13,7 @@ services:
       - webnet
     environment:
       - VIRTUAL_HOST=ghost.localhost
+      - url=http://ghost.localhost
   proxy:
     image: jwilder/nginx-proxy
     deploy:
