@@ -7,21 +7,12 @@ services:
         condition: on-failure
     volumes:
       - "./content:/var/lib/ghost/content"
-    networks:
-      - webnet
     environment:
       - VIRTUAL_HOST=ghost.localhost
+      - LETSENCRYPT_HOST=ghost.localhost
+      - LETSENCRYPT_EMAIL=admin@ghost.localhost
       - url=http://ghost.localhost
-  proxy:
-    image: jwilder/nginx-proxy
-    deploy:
-      restart_policy:
-        condition: on-failure
-    volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
-    ports:
-      - 80:80
-    networks:
-      - webnet
 networks:
-  webnet:
+  default:
+    external:
+      name: skynet
